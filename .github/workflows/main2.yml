@@ -15,7 +15,7 @@ jobs:
         run: npm install
 
       - name: Test                   # Test
-        run: npm run Test
+        run: npm run test
       
       - name: if fail
         uses: actions/github-script@0.2.0
