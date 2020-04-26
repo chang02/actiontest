@@ -1,13 +1,38 @@
-name: my workflow2                     # Workflow 이름
-on: [push]                            # Event 감지
+name: React Test
+on: 
+  pull_request:
+    branches:
+      - master
 
-jobs:                                 # Job 설정
-  build:                              # Job ID
-    name: hello github action2         # Job 이름
-    runs-on: ubuntu-18.04             # Job 가상환경 인스턴스
-    steps:                            # Steps
-      - name: checkout source code2    # Step 이름
-        uses: actions/checkout@master # Uses를 통한 외부 설정 가져오기: 자신의 레포지토리 소스 받아오기
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout source code.   # 레포지토리 체크아웃
+        uses: actions/checkout@master
 
-      - name: echo Hello2              # Step 이름
-        run: echo "Hello2"             # Run을 통한 스크립트 실행: Hello 출력
+      - name: Install Dependencies    # 의존 파일 설치
+        run: npm install
+
+      - name: Test                   # Test
+        run: npm run Test
+      
+      - name: if fail
+        uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{github.token}}  # github token을 선언해준다
+          script: |                        # script에 원하는 스크립트를 작성
+            const ref = "${{github.ref}}"
+            const pull_number = Number(ref.split("/")[2])
+            await github.pulls.createReview({
+              ...context.repo,
+              pull_number,
+              body:"테스트코드를 다시 확인해주세요. ",
+              event: "REQUEST_CHANGES"
+            })
+            await github.pulls.update({
+              ...context.repo,
+              pull_number,
+              state: "closed"
+            })
+        if: failure()
