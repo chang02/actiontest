@@ -1,11 +1,11 @@
-name: React Test
+name: React Build Test
 on: 
   pull_request:
     branches:
       - master
 
 jobs:
-  build:
+  checkBuild:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout source code.   # 레포지토리 체크아웃
@@ -14,8 +14,8 @@ jobs:
       - name: Install Dependencies    # 의존 파일 설치
         run: npm install
 
-      - name: Test                   # Test
-        run: npm run Test
+      - name: Build                   # Build
+        run: npm run build
       
       - name: if fail
         uses: actions/github-script@0.2.0
