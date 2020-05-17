@@ -14,8 +14,8 @@ jobs:
       - name: Install Dependencies    # 의존 파일 설치
         run: npm install
 
-      - name: Test                   # Test
-        run: npm run test
+      - name: Build                   # Build
+        run: npm run build
       
       - name: if fail
         uses: actions/github-script@0.2.0
