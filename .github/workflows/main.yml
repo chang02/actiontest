@@ -4,10 +4,14 @@ on: [push]
 jobs:                                 # Job 설정
   echo:                              # Job ID
     name: hello github action         # Job 이름
-    runs-on: self-hosted             # Job 가상환경 인스턴스
+    # runs-on: self-hosted             # Job 가상환경 인스턴스
+    runs-on: ubuntu-latest
     steps:                            # Steps
       - name: echo Hello1             # Step 이름
         run: echo "Hello step 1"      # Run을 통한 스크립트 실행: Hello setp 1 출력
 
-      - name: echo Hello2             # Step 이름
-        run: echo "Hello step 2"      # Run을 통한 스크립트 실행: Hello step 2 출력
+      - name: set name abc             # Step 이름
+        id: abc
+        run: echo "::set-output name=abc::danial"      #
+      - name: check abc
+        run: echo "${{ steps.abc.outputs.abc }}"

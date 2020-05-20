@@ -1,16 +1,16 @@
-name: Custom Action Test
-on: [push]
+# name: Custom Action Test
+# on: [push]
 
-jobs:
-  hello_world_job:
-    runs-on: self-hosted
-    name: A job to say hello
-    steps:
-    - name: Hello world action step
-      id: hello
-      uses: chang02/customaction@master
-      with:
-        who-to-greet: 'Danial'
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+# jobs:
+#   hello_world_job:
+#     runs-on: self-hosted
+#     name: A job to say hello
+#     steps:
+#     - name: Hello world action step
+#       id: hello
+#       uses: chang02/customaction@master
+#       with:
+#         who-to-greet: 'Danial'
+#     # Use the output from the `hello` step
+#     - name: Get the output time
+#       run: echo "The time was ${{ steps.hello.outputs.time }}"
