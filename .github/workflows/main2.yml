@@ -6,7 +6,7 @@ on:
 
 jobs:
   checkBuild:
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     steps:
       - name: Checkout source code.   # 레포지토리 체크아웃
         uses: actions/checkout@master
@@ -20,8 +20,8 @@ jobs:
       - name: if fail
         uses: actions/github-script@0.2.0
         with:
-          github-token: ${{github.token}}  # github token을 선언해준다
-          script: |                        # script에 원하는 스크립트를 작성
+          github-token: ${{github.token}}  
+          script: |                        
             const ref = "${{github.ref}}"
             const pull_number = Number(ref.split("/")[2])
             await github.pulls.createReview({
