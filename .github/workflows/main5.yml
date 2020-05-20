@@ -1,0 +1,16 @@
+name: Python test
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: self-hosted
+    name: python test
+    steps:
+    - name: setup python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+
+    - name: run python
+      run: |
+        python test.py
