@@ -7,7 +7,7 @@ jobs:
     name: python test
     steps:
     - name: setup python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python
       with:
         python-version: 3.8
 
