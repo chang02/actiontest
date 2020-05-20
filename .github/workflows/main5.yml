@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   hello_world_job:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     name: python test
     steps:
     - name: setup python
