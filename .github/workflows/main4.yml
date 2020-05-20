@@ -1,4 +1,4 @@
-name: Custom Action Test
+name: Custom Action Test2
 on: [push]
 
 jobs:
@@ -8,7 +8,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: chang02/customaction@master
+      uses: chang02/customaction2@master
       with:
         who-to-greet: 'Danial'
     # Use the output from the `hello` step
