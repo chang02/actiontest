@@ -6,12 +6,17 @@ jobs:                                 # Job 설정
     name: hello github action         # Job 이름
     # runs-on: self-hosted             # Job 가상환경 인스턴스
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.abc.outputs.}}
     steps:                            # Steps
       - name: echo Hello1             # Step 이름
         run: echo "Hello step 1"      # Run을 통한 스크립트 실행: Hello setp 1 출력
 
       - name: set name abc             # Step 이름
         id: abc
-        run: echo "::set-output name=abc::danial"      #
+        run: echo "::set-output name=abc::danial"      # 이 스텝에 대한 output 저장
+
       - name: check abc
         run: echo "${{ steps.abc.outputs.abc }}"
+
+# https://help.github.com/en/actions/reference/workflow-commands-for-github-actions
