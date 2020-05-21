@@ -7,7 +7,7 @@ jobs:                                 # Job 설정
     # runs-on: self-hosted             # Job 가상환경 인스턴스
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.abc.outputs.}}
+      output1: ${{ steps.abc.outputs.abc}}
     steps:                            # Steps
       - name: echo Hello1             # Step 이름
         run: echo "Hello step 1"      # Run을 통한 스크립트 실행: Hello setp 1 출력
@@ -18,5 +18,8 @@ jobs:                                 # Job 설정
 
       - name: check abc
         run: echo "${{ steps.abc.outputs.abc }}"
+      
+      - name: check abc2
+        run: echo "${{ needs.echo.outputs.output1 }}"
 
 # https://help.github.com/en/actions/reference/workflow-commands-for-github-actions
