@@ -1,0 +1,19 @@
+# name: Python test
+# on: [push]
+
+# jobs:
+#   hello_world_job:
+#     runs-on: ubuntu-latest
+#     name: python test
+#     steps:
+#     - name: Checkout source code.   # 레포지토리 체크아웃
+#       uses: actions/checkout@master
+
+#     - name: setup python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: '3.x'
+
+#     - name: run python
+#       run: |
+#         python test.py
