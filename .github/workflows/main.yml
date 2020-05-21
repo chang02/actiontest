@@ -19,7 +19,7 @@ jobs:                                 # Job 설정
       - name: check abc
         run: echo "${{ steps.abc.outputs.abc }}"
   echo2:
-    needs: job1
+    needs: echo
     name: echo job 2
     runs-on: ubuntu-latest
     steps:
