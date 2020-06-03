@@ -4,7 +4,7 @@ on: [push]
 jobs:                                 # Job 설정
   echo:                              # Job ID
     name: hello github action         # Job 이름
-    runs-on: self-hosted             # Job 가상환경 인스턴스
+    runs-on: runner1             # Job 가상환경 인스턴스
     steps:                            # Steps
       - name: echo Hello             # Step 이름
         run: echo "Hello step1"      # Run을 통한 스크립트 실행: Hello setp 1 출력

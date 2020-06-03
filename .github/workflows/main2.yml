@@ -6,7 +6,8 @@ on:
 
 jobs:
   checkBuild:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: runner2
     steps:
       - name: Checkout source code.   # 레포지토리 체크아웃
         uses: actions/checkout@master
@@ -32,7 +33,7 @@ jobs:
             await github.pulls.createReview({
               ...context.repo,
               pull_number,
-              body:"테스트코드를 다시 확인해주세요. ",
+              body:"빌드 실패",
               event: "REQUEST_CHANGES"
             })
             await github.pulls.update({
